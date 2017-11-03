@@ -7,16 +7,21 @@
 }
 body {
     font-family: rubik;
-    background-color: #ff6437;
-    background: linear-gradient(#fb7c3f -10%,#fcc05d 120%);
+    background-color: #f4f4f4;
 }
 .app {
     background-image: url(assets/images/bubbles.svg);
-    background-size: 100% auto;
+    background-size: auto 100%;
+    background-position: center center;
+    padding-bottom: 20%;
 }
 
 h1 {
     font-size: 28px
+}
+
+i {
+    margin-right: 10px;
 }
 
 .back-button,
