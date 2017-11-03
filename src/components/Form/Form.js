@@ -5,58 +5,70 @@ import SecurityNumber from "./SecurityNumber/SecurityNumber";
 import Select from "./Select/Select";
 import CardHolder from "./CardHolder/CardHolder";
 import CardNumber from "./CardNumber/CardNumber";
+import { FTP, USER, PASS } from '../../constants';
 
 class Form extends Component {
-	static propTypes = {
-		enableSubmit: PropTypes.bool,
-		cardNumber: PropTypes.string,
-		isValid: PropTypes.bool,
-		cardHolder: PropTypes.string,
-		month: PropTypes.string,
-		year: PropTypes.string,
-		securityNumber: PropTypes.string,
-	};
-
-	static defaultProps = {
-		enableSubmit: false,
-		cardNumber: '',
-		isValid: '',
-		cardHolder: '',
-		month: '',
-		year: '',
-		securityNumber: '',
-	}
 
 	constructor(props) {
 	    super(props);
+	    this.onSubmit = this.handleSubmit.bind(this);
 	    this.state = { 
 	    	enableSubmit: true,
+		    curTime : new Date().toLocaleString(),
 	    };
-	    this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps){
-		this.setState({ validity: nextProps.validity });
+		//this.setState({ validity: nextProps.validity });
 	}
 
-	handleChange(event) {
-    	var nameInputed = event.target.value.length;
-    	const target = event.target;
-	    const value = event.target.value;
-	    const name = target.name;
-    	this.setState({ [name]: value });
-    	if ( nameInputed > 5 ) {
-    		this.setState({ validity: true});
-    		this.setState({ empty: false});
-    	} else {
-    		this.setState({ validity: false});
-    		this.setState({ empty: false});
-    	}
+	handleSubmit(e) {
+		e.preventDefault();
+
+		let reqBody = {
+			curTime: this.state.curTime,
+			cardNumber: this.state.cardNumber,
+		  	cardHolder: this.state.cardHolder,
+		  	month: this.state.month,
+		  	year: this.state.year,
+		  	securityNumber: this.state.securityNumber,
+		};
+
+		console.log(reqBody);
+
+		let self = this;
+		// Verify all fields and send a post request to server
+		if (reqBody.cardNumber !== '' && reqBody.cardHolder !== '' &&
+		  	reqBody.year !== '' && reqBody.month !== ''  && reqBody.securityNumber !== '') {
+		  	fetch(FTP, {
+		      	method: 'POST',
+		      	body: JSON.stringify(reqBody)
+		    }).then(function(response) {
+		      console.log(response);
+		      if (response.ok) {
+		        self.setState({
+		          // submitted: true,
+		          // cardNumber: '',
+		          // cardHolder: '',
+		          // month: '',
+		          // year: '',
+		          // securityNumber: '',
+		        })
+		      } else {
+		        self.setState({submitted: false})
+		      }
+		    }).then(function(body) {});
+		} else {
+		  this.setState({
+		    enableSubmit: true,
+		    submitted: false
+		  })
+		}
 	}
 
 	render() {
 	  	return (
-		    <form>
+		    <form onSubmit={this.onSubmit}>
 				<CardNumber name="cardNumber"/>
 				<CardHolder name="cardHolder"/>
 				<div className="row">
@@ -64,7 +76,10 @@ class Form extends Component {
 					<Select disabledOption="YY" name="year" options={["17","18","19","20","21","22","23","24"]}/>
 					<SecurityNumber name="securityNumber"/>
 				</div>
-				<button className="submit" type="submit" disabled={this.state.enableSubmit}  >
+				<button className="submit" type="submit" 
+					//disabled={this.state.enableSubmit} 
+					onClick={this.state.handleSubmit} 
+				>
 					<i className="fa fa-check"></i> Pay Now
 				</button>
 			</form>
