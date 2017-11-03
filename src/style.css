@@ -7,6 +7,12 @@
 }
 body {
     font-family: rubik;
+    background-color: #ff6437;
+    background: linear-gradient(#fb7c3f -10%,#fcc05d 120%);
+}
+.app {
+    background-image: url(assets/images/bubbles.svg);
+    background-size: 100% auto;
 }
 
 h1 {
@@ -24,7 +30,7 @@ h1 {
     border-radius: 0;
     border: none;
     box-shadow: 0 0 20px rgba(0, 0, 0, .4);
-    display: flex;
+    display: block;
     position: relative;
     border-top: 2px solid #fa8105
 }
@@ -50,8 +56,7 @@ h1 {
 }
 button:focus,
 input:focus,
-select:focus,
-textarea:focus {
+select:focus {
     outline: 0
 }
 #checkout {
@@ -91,17 +96,6 @@ select {
 }
 input::placeholder {
     color: #ddd
-}
-input:focus {
-    border-color: #333;
-    highlight: none
-}
-input,
-select {
-    border: none;
-    border-bottom: 2px solid #ccc;
-    padding: 10px 0;
-    width: 100%
 }
 .panel-body {
     padding: 0
@@ -157,12 +151,15 @@ select.valid {
 }
 .back-button {
     font-size: 12px;
-    padding: 20px 0;
-    display: block;
-    color: #fa8105
+    padding: 20px;
+    display: inline-block;
+    border-radius: 8px;
+    background: #fff;
+    margin: 20px 0;
+    color: #fa8105;
 }
-.invalid #credit-card-input,
-input.invalid {
+.invalid,
+.invalid input {
     color: red;
     border-color: red;
     background-color: #fff
@@ -179,7 +176,7 @@ input.invalid {
     opacity: 0;
     transition: 1s
 }
-.invalid span {
+.recognized span {
     opacity: .3
 }
 .valid span {
@@ -215,4 +212,18 @@ input.invalid {
         margin-top: 0;
         opacity: 1
     }
+}
+
+input,
+select{
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+    width: 100%
+}
+
+input:focus {
+    border-color: #333;
+    color: #333;
+    highlight: none
 }
