@@ -1,5 +1,5 @@
-import React from 'react';
-import logo from '../../assets/images/symbio-logo.png';
+import React from "react";
+import logo from "../../assets/images/symbio-logo.png";
 
 const Header = () => {
   return (
