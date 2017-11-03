@@ -51,7 +51,7 @@ class CardNumber extends Component {
 				/>
 				<span className={this.state.cardFlag}><i className="fa fa-check"></i></span>
 			</div>
-	    );
+	   );
 	};
 };
 
