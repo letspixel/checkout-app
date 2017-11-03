@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Payment Info",
+  "name": "Develop a payment UI to validate a form",
   "icons": [
     {
       "src": "favicon.ico",

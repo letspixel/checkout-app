@@ -1,28 +1,14 @@
 
 @font-face {
-    font-family: rubikregular;
+    font-family: rubik;
     src: url(assets/fonts/rubik-regular-webfont.woff2) format('woff2'), url(assets/fonts/rubik-regular-webfont.woff) format('woff');
     font-weight: 400;
     font-style: normal
 }
-@font-face {
-    font-family: rubiklight;
-    src: url(assets/fonts/rubik-light-webfont.woff2) format('woff2'), url(assets/fonts/rubik-light-webfont.woff) format('woff');
-    font-weight: 400;
-    font-style: normal
-}
-@font-face {
-    font-family: rubikbold;
-    src: url(assets/fonts/rubik-bold-webfont.woff2) format('woff2'), url(assets/fonts/rubik-bold-webfont.woff) format('woff');
-    font-weight: 400;
-    font-style: normal
-}
 body {
-    background: #f8f8f8;
-    margin: 0;
-    padding: 0;
-    font-family: rubikregular
+    font-family: rubik;
 }
+
 h1 {
     font-size: 28px
 }
@@ -202,7 +188,7 @@ input.invalid {
 .amex {
     background-image: url(assets/images/amex.png)
 }
-.diners {
+.dinersclub {
     background-image: url(assets/images/diners.png)
 }
 .jcb {
