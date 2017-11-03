@@ -70,6 +70,3 @@ class CardNumber extends Component {
 };
 
 export default CardNumber;
-
-
-
