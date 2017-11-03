@@ -19,7 +19,7 @@ class SecurityNumber extends React.Component {
 	    this.state = { 
 	    	validity: true,
 	    };
-	    this.cscLength = this.cscLength.bind(this);
+	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
 	}
 
@@ -27,7 +27,7 @@ class SecurityNumber extends React.Component {
 		this.setState({ validity: nextProps.validity.value });
 	}
 
-	cscLength(event) {
+	handleChange(event) {
     	var nameInputed = event.target.value.length;
     	if ( nameInputed === 3 ) {
     		this.setState({ validity: true});
@@ -54,10 +54,9 @@ class SecurityNumber extends React.Component {
 				<InputMask 
 					className="security-number"  
 					mask="999" placeholder="CSC" 
-					onChange={this.cscLength} 
+					onChange={this.handleChange} 
 					onFocus={this.onFocused}
 					maskChar="" 
-					name="csc" 
 					className={classnames("", {"valid": this.state.validity, "invalid": !this.state.validity})}  
 				/>
 			</div>

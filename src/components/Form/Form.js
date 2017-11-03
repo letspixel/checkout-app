@@ -8,29 +8,43 @@ import CardNumber from "./CardNumber/CardNumber";
 
 class Form extends Component {
 	static propTypes = {
-		validity: PropTypes.bool,
-		empty: PropTypes.bool,
+		enableSubmit: PropTypes.bool,
+		cardNumber: PropTypes.string,
+		isValid: PropTypes.bool,
+		cardHolder: PropTypes.string,
+		month: PropTypes.string,
+		year: PropTypes.string,
+		securityNumber: PropTypes.string,
 	};
 
 	static defaultProps = {
-		validity: true,
-		empty: true,
+		enableSubmit: false,
+		cardNumber: '',
+		isValid: '',
+		cardHolder: '',
+		month: '',
+		year: '',
+		securityNumber: '',
 	}
 
 	constructor(props) {
 	    super(props);
 	    this.state = { 
-	    	validity: true,
+	    	enableSubmit: true,
 	    };
-	    this.nameLength = this.nameLength.bind(this);
+	    this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps){
 		this.setState({ validity: nextProps.validity });
 	}
 
-	nameLength(event) {
+	handleChange(event) {
     	var nameInputed = event.target.value.length;
+    	const target = event.target;
+	    const value = event.target.value;
+	    const name = target.name;
+    	this.setState({ [name]: value });
     	if ( nameInputed > 5 ) {
     		this.setState({ validity: true});
     		this.setState({ empty: false});
@@ -40,16 +54,15 @@ class Form extends Component {
     	}
 	}
 
-
 	render() {
 	  	return (
 		    <form>
-				<CardNumber />
-				<CardHolder />
+				<CardNumber name="cardNumber"/>
+				<CardHolder name="cardHolder"/>
 				<div className="row">
 					<Select disabledOption="MM" name="month" options={["01","02","03","04","05","06","07","08","09","10","11","12"]}/>
 					<Select disabledOption="YY" name="year" options={["17","18","19","20","21","22","23","24"]}/>
-					<SecurityNumber />
+					<SecurityNumber name="securityNumber"/>
 				</div>
 				<button className="submit" type="submit" disabled={this.state.enableSubmit}  >
 					<i className="fa fa-check"></i> Pay Now

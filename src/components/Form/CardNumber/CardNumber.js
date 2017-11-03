@@ -27,7 +27,7 @@ class CardNumber extends Component {
 	    	validity: "",
 	    	cardFlag: "",
 	    };
-	    this.checkCard = this.checkCard.bind(this);
+	    this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -36,7 +36,7 @@ class CardNumber extends Component {
 		});
 	}
 
-  	checkCard(event) {
+  	handleChange(event) {
     	var cardNumber = creditcardutils.formatCardNumber(event.target.value);
     	var cardFlag = creditcardutils.parseCardType(cardNumber);
     	var validity = creditcardutils.validateCardNumber(cardNumber);
@@ -56,11 +56,11 @@ class CardNumber extends Component {
 	    	<div className={classnames("credit-card", {"valid": this.state.validity, "recognized": this.state.recognized, "invalid": !this.state.validity})} >
 				<InputMask 
 					className="security-number"  
-					mask="9999  9999  9999  9999  999" 
+					mask="9999  9999  9999  9999" 
 					name="cardNumber" id="credit-card-input" 
 					placeholder="Credit Card Number" 
 					maskChar=""  
-					onChange={this.checkCard} 
+					onChange={this.handleChange} 
 					autoFocus
 				/>
 				<span className={this.state.cardFlag}></span>

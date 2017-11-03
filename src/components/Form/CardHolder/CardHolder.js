@@ -19,7 +19,7 @@ class CardHolder extends React.Component {
 	    this.state = { 
 	    	validity: true,
 	    };
-	    this.nameLength = this.nameLength.bind(this);
+	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
 	}
 
@@ -29,7 +29,7 @@ class CardHolder extends React.Component {
 		});
 	}
 
-	nameLength(event) {
+	handleChange(event) {
     	var nameInputed = event.target.value.length;
     	if ( nameInputed > 5 ) {
     		this.setState({ validity: true});
@@ -56,7 +56,7 @@ class CardHolder extends React.Component {
 				id="name-input"  
 				placeholder="Name on Credit Card" 
 				maskChar=""
-				onChange={this.nameLength}
+				onChange={this.handleChange}
 				onFocus={this.onFocused}
 				className={classnames("", {"valid": this.state.validity, "invalid": !this.state.validity})}  
 			/>

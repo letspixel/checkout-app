@@ -15,12 +15,13 @@ class Select extends React.Component {
 	    	options: "",
 	    	selectedOption: "",
 	    	validity: "",
-	    	changed: false,
+	    	changed: true,
 	    };
-	    this.selectValidate = this.selectValidate.bind(this);
+	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
 	}
-	selectValidate(event) {
+
+	handleChange(event) {
     	var option = event.target.value.length;
     	this.setState({ changed: true });
     	if ( option > 0 ) {
@@ -31,10 +32,11 @@ class Select extends React.Component {
 	}
 
 	onFocused(event) {
-    	var option = event.target.value.length;
-    	if ( option === 0 ) {
+    	var option = event.target.value;
+    	this.setState({ changed: false });
+    	if ( option === '' ) {
     		this.setState({ validity: false});
-    		this.setState({ empty: true});
+    		this.setState({ changed: false});
     	}
 	}
 
@@ -42,15 +44,15 @@ class Select extends React.Component {
 	render() {
 		const options = this.props.options;
 		const listOptions = options.map((number,key) =>
-			<option key={key + 1} value={number}>{number}</option>
+			<option key={key} value={number}>{number}</option>
 		);
 	    return (
 	    	<div className="col-xs-4">
 	    		<select 
-					onChange={this.selectValidate}
-					onClick={this.onFocused}
+					onChange={this.handleChange}
+					onFocus={this.onFocused}
 					name={this.props.name}
-					className={classnames("", {"valid": this.state.validity, "invalid": !this.state.validity && this.state.changed})}  
+					className={classnames("", {"valid": this.state.validity,  "invalid": !this.state.validity && !this.state.changed})}  
 				>
 					<option value="" disabled selected>{this.props.disabledOption}</option>
 					{listOptions}
