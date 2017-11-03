@@ -24,9 +24,9 @@ First of all, please download or clone this repo.
   - [npm start](#npm-start)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
-- [App Usage](#app-usage)
-  -[Credit Card Number](#credit-card-number)
-  -[Enable Submit Button](#enable-submit-button)
+- [Application Usage](#application-usage)
+  - [Credit Card Number](#credit-card-number)
+  - [Enable Submit Button](#enable-submit-button)
 - [Build with](#build-with)
 
 
@@ -107,7 +107,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 The app is ready to be deployed!
 
-## Aplication Usage
+## Application Usage
 
 Just some tips on how to the form works.
 
@@ -148,7 +148,7 @@ For testing purposes:
 ```
 ```
 6759649826438453 - Maestro
-``
+```
 
 
 ### Enable Submit Button
