@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import classnames from "classnames";
-import PropTypes from "prop-types";
+//import classnames from "classnames";
+//import PropTypes from "prop-types";
 import SecurityNumber from "./SecurityNumber/SecurityNumber";
 import Select from "./Select/Select";
 import CardHolder from "./CardHolder/CardHolder";
 import CardNumber from "./CardNumber/CardNumber";
-import { FTP, USER, PASS } from '../../constants';
+import { FTP } from '../../constants';
 
 class Form extends Component {
 

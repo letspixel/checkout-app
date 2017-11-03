@@ -11,14 +11,6 @@ class CardNumber extends Component {
 		validity: PropTypes.bool,
 		recognized: PropTypes.bool,
 		maybeValid: PropTypes.bool,
-	};
-
-	static defaultProps = {
-		cardNumber: "",
-		cardFlag: "",
-		validity: true,
-		maybeValid: false,
-		recognized: false,
 	}
 
 	constructor(props) {
@@ -28,12 +20,6 @@ class CardNumber extends Component {
 	    	cardFlag: "",
 	    };
 	    this.handleChange = this.handleChange.bind(this);
-	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			cardFlag: nextProps.cardFlag.value
-		});
 	}
 
   	handleChange(event) {
@@ -63,7 +49,7 @@ class CardNumber extends Component {
 					onChange={this.handleChange} 
 					autoFocus
 				/>
-				<span className={this.state.cardFlag}></span>
+				<span className={this.state.cardFlag}><i className="fa fa-check"></i></span>
 			</div>
 	    );
 	};

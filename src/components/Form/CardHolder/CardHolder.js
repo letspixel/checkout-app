@@ -7,11 +7,6 @@ class CardHolder extends React.Component {
 	static propTypes = {
 		validity: PropTypes.bool,
 		empty: PropTypes.bool,
-	};
-
-	static defaultProps = {
-		validity: true,
-		empty: true,
 	}
 
 	constructor(props) {
@@ -21,12 +16,6 @@ class CardHolder extends React.Component {
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
-	}
-
-	componentWillReceiveProps(nextProps){
-		this.setState({
-			validity: nextProps.validity
-		});
 	}
 
 	handleChange(event) {

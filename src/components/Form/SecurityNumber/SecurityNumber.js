@@ -7,11 +7,6 @@ class SecurityNumber extends React.Component {
 	static propTypes = {
 		validity: PropTypes.bool,
 		empty: PropTypes.bool,
-	};
-
-	static defaultProps = {
-		validity: true,
-		empty: true,
 	}
 
 	constructor(props) {
