@@ -1,6 +1,6 @@
 # Hello!
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This is my repo for the **frontend project** to simulate a credit card validation. This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
 
@@ -12,9 +12,9 @@ You will be able to see the demo [here](https://leticiarezende.com/symbio).
 
 First of all, please download or clone this repo.
 
-## Prerequisites
+### Prerequisites
 - Node.js
-- npm
+- NPM
 - ReactJS
 
 ## Table of Contents
@@ -24,6 +24,11 @@ First of all, please download or clone this repo.
   - [npm start](#npm-start)
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
+- [App Usage](#app-usage)
+  -[Credit Card Number](#credit-card-number)
+  -[Enable Submit Button](#enable-submit-button)
+- [Build with](#build-with)
+
 
 ## Folder Structure
 
@@ -39,6 +44,8 @@ checkout/
     favicon.png
     index.html
     manifest.json
+  server/
+    server.py
   src/
     assets/
       css/
@@ -91,7 +98,6 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
 
 ### `npm run build`
 
@@ -99,8 +105,73 @@ Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The app is ready to be deployed!
 
-See the section about [deployment](#deployment) for more information.
+## Aplication Usage
+
+Just some tips on how to the form works.
+
+### Credit Card Number
+
+This application is able to recognize most common carries. Validation occurs as you type on the credit card number input, if number is recognized to be from one of the carriers listed below, it will show its flag. If number is valid, according to Luhn, flag will appear in full opacity. If carrier is unkown, no flag will be shown.
+
+Carriers:
+* Visa
+* MasterCard
+* American Express
+* Diners
+* Discover
+* JCB
+* Maestro
+
+For testing purposes:
+```
+4111111111111111 - Visa
+```
+```
+5123630736497087 - Mastercard
+```
+```
+371449635398431 - American Express
+```
+```
+5555555555554444 - Mastercard
+```
+```
+30569309025904 - Diners
+```
+```
+6011111111111117 - Discover
+```
+```
+3530111333300000 - JCB
+```
+```
+6759649826438453 - Maestro
+``
+
+
+### Enable Submit Button
+
+To enable the submit button user must fill every input correctly. Rules are:
+
+* **Credit Card Number:** Must be a sequence recognized by carrier, and Length and Luhn valid.
+* **Name on Card:** Should be at least 5 chars long.
+* **Month and Year:** One of the options provided must be selected.
+* **CSC:** Security number on the back of the card. Should be 3 chars long.
+
+
+## Built With
+
+* [NPM](https://npmjs.com/en/) 
+* [ReactJS](https://reactjs.org/)
+
+By **Leticia Rezende**.
+
+
+
+
+
+
 
 
