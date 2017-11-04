@@ -175,7 +175,7 @@ select.valid {
 .credit-card span {
     background-repeat: no-repeat;
     background-position: 0 100%;
-    width: 48px;
+    width: 60px;
     height: 48px;
     display: block;
     position: absolute;
@@ -184,10 +184,10 @@ select.valid {
     opacity: 0;
     transition: width 0.2s 0.1s, opacity 0.3s 0.2s, right 0.3s 0.3s, background 0.4s 0.4s;
 }
-.recognized span {
+.credit-card span {
     opacity: .3;
     right: -3px;
-    background-position: center;
+    background-position: left;
 }
 .valid span {
     opacity: 1
@@ -238,24 +238,26 @@ input:focus {
     highlight: none
 }
 
-span .fa.fa-check {
+.credit-card span .fa {
     position: absolute;
-    right: -30px;
-    color: green;
+    right: -10px;
     font-size: 20px;
-    opacity: 0;
+    opacity: 1;
     height: 48px;
     width: 20px;
     line-height: 48px;
     transition: 0.4s;
 }
 
-.valid .fa.fa-check {
-    right: -10px;
-    opacity: 1;
+span .fa-check {
+    color: green;
 }
-
-.recognized.valid span {width: 85px;}
+span .fa-close {
+    color: red;
+}
+.recognized span {
+    width: 70px;
+}
 
 footer {
     background: #f4f4f4;

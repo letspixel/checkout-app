@@ -8,8 +8,9 @@ class CardNumber extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = { 
-	    	validity: '',
+	    	validity: null,
 	    	cardFlag: '',
+	    	icon: ''
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	}
@@ -20,6 +21,7 @@ class CardNumber extends Component {
     	var cardNumber = creditcardutils.formatCardNumber(event.target.value);
     	var cardFlag 	= creditcardutils.parseCardType(cardNumber);
     	var validity 	= creditcardutils.validateCardNumber(cardNumber);
+    	var icon			= '';
     	this.setState({ 
     		validity: validity, 
     		cardFlag: cardFlag 
@@ -30,8 +32,17 @@ class CardNumber extends Component {
     	} else {
     		recognized = false;
     	}
+    	if ( validity ) {
+    		icon = 'fa fa-check';
+    	}
+    	if ( validity === false || recognized === false ) {
+    		icon = 'fa fa-close';
+    	}
     	this.setState({ 
     		recognized: recognized 
+    	});
+    	this.setState({ 
+    		icon: icon 
     	});
 	}
 
@@ -42,9 +53,8 @@ class CardNumber extends Component {
 		    		'credit-card', 
 		    		{
 		    			'valid'		: this.state.validity,  
-		    			'invalid'	: !this.state.validity,
-		    			'recognized': this.state.recognized,
-		    			'unknown'	: !this.state.recognized
+		    			'invalid'	: !this.state.validity || !this.state.recognized,
+		    			'recognized': this.state.recognized
 		    		}
 		    	)
 		    }>
@@ -58,7 +68,7 @@ class CardNumber extends Component {
 					autoFocus
 				/>
 				<span className={this.state.cardFlag}>
-					<i className='fa fa-check'></i>
+					<i className={this.state.icon}></i>
 				</span>
 			</div>
 	   );
