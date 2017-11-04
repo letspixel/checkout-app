@@ -1,7 +1,6 @@
-
 @font-face {
     font-family: rubik;
-    src: url(assets/fonts/rubik-regular-webfont.woff2) format('woff2'), url(assets/fonts/rubik-regular-webfont.woff) format('woff');
+    src: url(../fonts/rubik-regular-webfont.woff2) format('woff2'), url(../fonts/rubik-regular-webfont.woff) format('woff');
     font-weight: 400;
     font-style: normal
 }
@@ -10,7 +9,7 @@ body {
     background-color: #f4f4f4;
 }
 .app {
-    background-image: url(assets/images/bubbles.svg);
+    background-image: url(../images/bubbles.svg);
     background-size: auto 100%;
     background-position: center center;
     padding-bottom: 20%;
@@ -55,7 +54,7 @@ i {
 #payment-box,
 .navbar .container,
 .page-header {
-    position: relative
+    position: relative;
 }
 .panel {
     border: none
@@ -66,13 +65,16 @@ select:focus {
     outline: 0
 }
 #checkout {
-    animation: checkoutAni 1s
+    animation: checkoutAni 1s;
+    margin: auto;
 }
 #payment-box {
     border-radius: 8px;
     box-shadow: 0 10px 60px rgba(0, 0, 0, .1);
     padding: 20px 40px 0;
-    background: #fff
+    background: #fff;
+    float: none;
+    margin: auto;
 }
 .page-header {
     margin: 0;
@@ -191,25 +193,25 @@ select.valid {
     opacity: 1
 }
 .amex {
-    background-image: url(assets/images/amex.png)
+    background-image: url(../images/amex.png)
 }
 .dinersclub {
-    background-image: url(assets/images/diners.png)
+    background-image: url(../images/diners.png)
 }
 .jcb {
-    background-image: url(assets/images/jcb.png)
+    background-image: url(../images/jcb.png)
 }
 .visa {
-    background-image: url(assets/images/visa.png)
+    background-image: url(../images/visa.png)
 }
 .mastercard {
-    background-image: url(assets/images/mastercard.png)
+    background-image: url(../images/mastercard.png)
 }
 .discover {
-    background-image: url(assets/images/discover.png)
+    background-image: url(../images/discover.png)
 }
 .maestro {
-    background-image: url(assets/images/maestro.png)
+    background-image: url(../images/maestro.png)
 }
 @keyframes checkoutAni {
     0% {
@@ -254,3 +256,24 @@ span .fa.fa-check {
 }
 
 .recognized.valid span {width: 85px;}
+
+footer {
+    background: #f4f4f4;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    color: #909090;
+    font-size: 11px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1)
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a{
+    color: #fa8104;
+    font-weight: bold;
+}

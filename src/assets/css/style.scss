@@ -1,0 +1,324 @@
+$orange:  #fa8104;
+$lightgrey: $#f4f4f4 ;
+$grey: #ccc;
+$darkgrey: #525252;
+$white: #fff;
+
+
+@font-face {
+  font-family: rubik;
+  src: url(../fonts/rubik-regular-webfont.woff2) format("woff2"), url(../fonts/rubik-regular-webfont.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+  font-family: rubik;
+  background-color: $lightgrey ;
+}
+
+.app {
+  background-image: url(../images/bubbles.svg);
+  background-size: auto 100%;
+  background-position: center center;
+  padding-bottom: 20%;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+i {
+  margin-right: 10px;
+  opacity: 0.6;
+}
+
+.back-button, .navbar span, .submit {
+  text-transform: uppercase;
+}
+
+.navbar {
+  background: #525252;
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: block;
+  position: relative;
+  border-top: 2px solid $orange;
+}
+
+.navbar-header {
+  width: 100%;
+}
+
+.navbar span {
+  color: $orange;
+  letter-spacing: 1px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px 0;
+}
+
+#payment-box, .navbar .container, .page-header {
+  position: relative;
+}
+
+.panel {
+  border: none;
+}
+
+button:focus, input:focus, select:focus {
+  outline: 0;
+}
+
+#checkout {
+  animation: checkoutAni 1s;
+  margin: auto;
+}
+
+#payment-box {
+  border-radius: 8px;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+  padding: 20px 40px 0;
+  background: #fff;
+  float: none;
+  margin: auto;
+}
+
+.page-header {
+  margin: 0;
+  border: none;
+  &:before {
+    content: '';
+    display: block;
+    height: 28px;
+    position: absolute;
+    left: -40px;
+    width: 10px;
+    background: $orange;
+  }
+}
+
+button {
+  &[disabled] {
+    background: #ddd;
+    box-shadow: 0 4px 0 #cdcdcd;
+    transform: scale(0.9);
+  }
+  margin: 10px 0;
+  color: #333;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+input, select {
+  margin: 10px 0;
+  color: #333;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.panel {
+  box-shadow: none;
+}
+
+.credit-card {
+  position: relative;
+  input {
+    letter-spacing: 1px;
+  }
+}
+
+.logo {
+  max-height: 60px;
+  display: inline-block;
+}
+
+.submit, select {
+  width: 100%;
+  display: block;
+}
+
+.submit {
+  transform: scale(1);
+  box-shadow: 0 4px 0 #bf6000, 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+  background: $orange;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 40px;
+  font-size: 20px;
+  color: #fff;
+  margin: 20px 0;
+}
+
+input {
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+select {
+  background: #fff;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  padding: 0;
+  color: #ddd;
+  height: 50px;
+  &::-ms-expand {
+    display: none;
+  }
+  &.valid {
+    color: #333;
+  }
+}
+
+.back-button {
+  font-size: 12px;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 8px;
+  background: #fff;
+  margin: 20px 0;
+  color: $orange;
+}
+
+.invalid {
+  color: red;
+  border-color: red;
+  background-color: #fff;
+  input {
+    color: red;
+    border-color: red;
+    background-color: #fff;
+  }
+}
+
+.credit-card span {
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  width: 48px;
+  height: 48px;
+  display: block;
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  opacity: 0;
+  transition: width 0.2s 0.1s, opacity 0.3s 0.2s, right 0.3s 0.3s, background 0.4s 0.4s;
+}
+
+.recognized span {
+  opacity: .3;
+  right: -3px;
+  background-position: center;
+}
+
+.valid span {
+  opacity: 1;
+}
+
+.amex {
+  background-image: url(../images/amex.png);
+}
+
+.dinersclub {
+  background-image: url(../images/diners.png);
+}
+
+.jcb {
+  background-image: url(../images/jcb.png);
+}
+
+.visa {
+  background-image: url(../images/visa.png);
+}
+
+.mastercard {
+  background-image: url(../images/mastercard.png);
+}
+
+.discover {
+  background-image: url(../images/discover.png);
+}
+
+.maestro {
+  background-image: url(../images/maestro.png);
+}
+
+@keyframes checkoutAni {
+  0% {
+    margin-top: 10%;
+    opacity: 0;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+
+input, select {
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  padding: 10px 0;
+  width: 100%;
+}
+
+input:focus {
+  border-color: #333;
+  color: #333;
+  highlight: none;
+}
+
+span .fa.fa-check {
+  position: absolute;
+  right: -30px;
+  color: green;
+  font-size: 20px;
+  opacity: 0;
+  height: 48px;
+  width: 20px;
+  line-height: 48px;
+  transition: 0.4s;
+}
+
+.valid .fa.fa-check {
+  right: -10px;
+  opacity: 1;
+}
+
+.recognized.valid span {
+  width: 85px;
+}
+
+footer {
+  background: $lightgrey ;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  color: #909090;
+  font-size: 11px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  p {
+    margin: 0;
+  }
+  a {
+    color: $orange;
+    font-weight: bold;
+  }
+}

@@ -5,14 +5,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 class CardNumber extends Component {
-	static propTypes = {
-		cardNumber: PropTypes.string,
-		cardFlag: PropTypes.string,
-		validity: PropTypes.bool,
-		recognized: PropTypes.bool,
-		maybeValid: PropTypes.bool,
-	}
-
+	
 	constructor(props) {
 	    super(props);
 	    this.state = { 

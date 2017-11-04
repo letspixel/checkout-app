@@ -4,10 +4,6 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 class CardHolder extends React.Component {
-	static propTypes = {
-		validity: PropTypes.bool,
-		empty: PropTypes.bool,
-	}
 
 	constructor(props) {
 	    super(props);

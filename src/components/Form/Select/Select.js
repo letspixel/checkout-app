@@ -3,10 +3,6 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 class Select extends React.Component {
-	static propTypes = {
-		validity: PropTypes.bool,
-		changed: PropTypes.bool,
-	}
 
 	constructor(props) {
 	    super(props);
