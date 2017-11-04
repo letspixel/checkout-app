@@ -26,6 +26,7 @@ First of all, please download or clone this repo.
   - [npm run build](#npm-run-build)
 - [Application Usage](#application-usage)
   - [Credit Card Number](#credit-card-number)
+  - [Inputs Validation](inputs-validation)
   - [Enable Submit Button](#enable-submit-button)
 - [Build with](#build-with)
 
@@ -61,20 +62,18 @@ checkout/
           CardNumber.js
         SecurityNumber/
           SecurityNumber.js
-        SecurityNumber/
-          SecurityNumber.js
         Select/
           Select.js
         Form.js
       Header/
         Header.js
     App.js
+    constants.js
     index.js
     style.css
   .gitignore
   package-json.lock
   package.json
-  webpack.config.js
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -115,40 +114,17 @@ Just some tips on how the form works.
 
 This application is able to recognize most common carriers. Validation occurs as you type in the credit card number input, if number is recognized to be from one of the carriers listed below, it will show its flag. If number is valid, according to Luhn, flag will appear in full opacity. If carrier is unkown, no flag will be shown and input will be red to indicate it is wrong.
 
-| Carrier             | Starts with |
-| -------------       | ------------- |
-| Visa                |  Starts with 4  |
-| MasterCard          |  Starts with 51 to 55  |
-| American Express    |  Starts with 34 to 37  |
-| Diners              |  Starts with 300 to 305, 309, 36, 38 to 39  |
-| Discover            |  Starts with 6011, 622126 to 622925, 644 to 649, 65  |
-| JCB                 |  Starts with 3528 to 3589  |
-| Maestro             |  Starts with 5018, 5020, 5038, 5612, 5893, 6304, 6759, 6761, 6762, 6763, 0604, 6390  |
+| Carrier             | Starts with | Test |
+| -------------       | ------------- | ------------- |
+| Visa                |  Starts with 4  |  4111111111111111
+| MasterCard          |  Starts with 51 to 55  | 5123630736497087
+| American Express    |  Starts with 34 to 37  | 371449635398431 
+| Diners              |  Starts with 300 to 305, 309, 36, 38 to 39  | 30569309025904
+| Discover            |  Starts with 6011, 622126 to 622925, 644 to 649, 65  | 6011111111111117
+| JCB                 |  Starts with 3528 to 3589  | 3530111333300000
+| Maestro             |  Starts with 5018, 5020, 5038, 5612, 5893, 6304, 6759, 6761, 6762, 6763, 0604, 6390  | 6759649826438453
 
-For testing purposes:
-```
-4111111111111111 - Visa
-```
-```
-5123630736497087 - Mastercard
-```
-```
-371449635398431 - American Express
-```
-```
-30569309025904 - Diners
-```
-```
-6011111111111117 - Discover
-```
-```
-3530111333300000 - JCB
-```
-```
-6759649826438453 - Maestro
-```
-
-#### Inputs Validation
+### Inputs Validation
 
 If inputs are empty or invalid, they turn red once user leaves it, to indicate it must be filled correctly. While user is typing, input will not show if it is invalid, as user may still be changing the content.
 
@@ -167,11 +143,3 @@ To enable the submit button user must fill every input correctly. If not, button
 * [ReactJS](https://reactjs.org/)
 
 By **Leticia Rezende**.
-
-
-
-
-
-
-
-
