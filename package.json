@@ -5,6 +5,7 @@
   "repository": "git@github.com:letspixel/letspixel.github.io.git",
   "author": "Leticia Rezende <euamoaita@gmail.com>",
   "license": "MIT",
+  "homepage": "http://leticiarezende.com/symbio",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

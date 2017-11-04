@@ -44,17 +44,15 @@ checkout/
     favicon.png
     index.html
     manifest.json
-  server/
-    server.py
   src/
     assets/
       css/
       fonts/
-      iamges/
+      images/
     components/
       Content/
         Content.js
-        Form/
+      Form/
         CardHolder/
           CardHolder.js
         CardNumber/
@@ -109,11 +107,11 @@ The app is ready to be deployed!
 
 ## Application Usage
 
-Just some tips on how to the form works.
+Just some tips on how the form works.
 
 ### Credit Card Number
 
-This application is able to recognize most common carries. Validation occurs as you type on the credit card number input, if number is recognized to be from one of the carriers listed below, it will show its flag. If number is valid, according to Luhn, flag will appear in full opacity. If carrier is unkown, no flag will be shown.
+This application is able to recognize most common carriers. Validation occurs as you type in the credit card number input, if number is recognized to be from one of the carriers listed below, it will show its flag. If number is valid, according to Luhn, flag will appear in full opacity. If carrier is unkown, no flag will be shown and input will be red to indicate it is wrong.
 
 Carriers:
 * Visa
@@ -133,9 +131,6 @@ For testing purposes:
 ```
 ```
 371449635398431 - American Express
-```
-```
-5555555555554444 - Mastercard
 ```
 ```
 30569309025904 - Diners
