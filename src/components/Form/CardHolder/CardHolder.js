@@ -1,13 +1,13 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
-import classnames from 'classnames';
 
 class CardHolder extends React.Component {
 
 	constructor(props) {
 	    super(props);
 	    this.state = { 
-	    	validity: true, // Set to true at first so that the input appears normally
+	    	validity: true, 
+	    	// Set to true at first so that the input appears normally
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
@@ -17,11 +17,14 @@ class CardHolder extends React.Component {
 	handleChange(event) {
     	var nameLength = event.target.value.length;
     	if ( nameLength > 5 ) {
-    		this.setState({ validity: true});
-    		this.setState({ empty: false});
+    		this.setState({ 
+    			validity: 	true, 
+    			empty: 		false});
     	} else {
-    		this.setState({ validity: false});
-    		this.setState({ empty: false});
+    		this.setState({ 
+    			validity: 	false, 
+    			empty: 		false
+    		});
     	}
 	}
 
@@ -29,8 +32,10 @@ class CardHolder extends React.Component {
 	onFocused(event) {
     	var nameLength = event.target.value.length;
     	if ( nameLength === 0 ) {
-    		this.setState({ validity: false});
-    		this.setState({ empty: true});
+    		this.setState({ 
+    			validity: 	false, 
+    			empty: 		true
+    		});
     	}
 	}
 
@@ -43,7 +48,7 @@ class CardHolder extends React.Component {
 				maskChar=''
 				onChange={this.handleChange}
 				onFocus={this.onFocused}
-				className={classnames('', {'valid': this.state.validity, 'invalid': !this.state.validity})}  
+				className={this.state.validity ? 'valid'	: 'invalid'}
 			/>
 	    );
 	};

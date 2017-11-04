@@ -18,22 +18,36 @@ class CardNumber extends Component {
 	// Also identifies the carrier name to show card flag
   	handleChange(event) {
     	var cardNumber = creditcardutils.formatCardNumber(event.target.value);
-    	var cardFlag = creditcardutils.parseCardType(cardNumber);
-    	var validity = creditcardutils.validateCardNumber(cardNumber);
-    	this.setState({ validity: validity });
-    	this.setState({ cardFlag: cardFlag });
+    	var cardFlag 	= creditcardutils.parseCardType(cardNumber);
+    	var validity 	= creditcardutils.validateCardNumber(cardNumber);
+    	this.setState({ 
+    		validity: validity, 
+    		cardFlag: cardFlag 
+    	});
     	var recognized =  '';
     	if ( cardFlag !== null ) {
     		recognized = true;
     	} else {
     		recognized = false;
     	}
-    	this.setState({ recognized: recognized });
+    	this.setState({ 
+    		recognized: recognized 
+    	});
 	}
 
 	render() {
 	    return (
-	    	<div className={classnames('credit-card', {'valid': this.state.validity, 'recognized': this.state.recognized, 'invalid': !this.state.validity})} >
+	    	<div className={
+	    		classnames(
+		    		'credit-card', 
+		    		{
+		    			'valid'		: this.state.validity,  
+		    			'invalid'	: !this.state.validity,
+		    			'recognized': this.state.recognized,
+		    			'unknown'	: !this.state.recognized
+		    		}
+		    	)
+		    }>
 				<InputMask 
 					className='security-number'  
 					mask='9999  9999  9999  9999' 
@@ -43,7 +57,9 @@ class CardNumber extends Component {
 					onChange={this.handleChange} 
 					autoFocus
 				/>
-				<span className={this.state.cardFlag}><i className='fa fa-check'></i></span>
+				<span className={this.state.cardFlag}>
+					<i className='fa fa-check'></i>
+				</span>
 			</div>
 	   );
 	};

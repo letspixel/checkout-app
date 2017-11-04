@@ -18,27 +18,27 @@ class Form extends Component {
 	    };
 	}
 
-	handleSubmit(e) {
-		e.preventDefault();
+	handleSubmit(event) {
+		event.preventDefault();
 
-		let reqBody = {
+		let formContent = {
 			curTime: this.state.curTime,
-			cardNumber: this.state.cardNumber,
-		  	cardHolder: this.state.cardHolder,
-		  	month: this.state.month,
-		  	year: this.state.year,
-		  	securityNumber: this.state.securityNumber,
+			cardNumber: this.state.cardNumber, 
+			CardHolder: this.state.cardHolder, 
+			month: this.state.month, 
+			year: this.state.year, 
+			SecurityNumber: this.state.securityNumber,
 		};
 
-		console.log(reqBody);
+		console.log(formContent);
 
 		let self = this;
 
-		if (reqBody.cardNumber !== '' && reqBody.cardHolder !== '' &&
-		  	reqBody.year !== '' && reqBody.month !== ''  && reqBody.securityNumber !== '') {
+		if (formContent.cardNumber !== '' && formContent.cardHolder !== '' &&
+		  	formContent.year !== '' && formContent.month !== ''  && formContent.securityNumber !== '') {
 		  	fetch(FTP, {
 		      	method: 'POST',
-		      	body: JSON.stringify(reqBody)
+		      	body: JSON.stringify(formContent)
 		    }).then(function(response) {
 		      console.log(response);
 		      if (response.ok) {
@@ -57,7 +57,7 @@ class Form extends Component {
 		} else {
 		  this.setState({
 		    enableSubmit: true,
-		    submitted: false
+		    submitted: 	false
 		  })
 		}
 	}

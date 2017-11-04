@@ -39,17 +39,24 @@ class Select extends React.Component {
 	render() {
 		const options = this.props.options;
 		const listOptions = options.map((number,key) =>
-			<option key={key} value={number}>{number}</option>
-		); // return an option for each key
+			<option key={key} value={number}>
+				{number}
+			</option>
+		); // return an option for each value provided
 	    return (
 	    	<div className='col-xs-4'>
 	    		<select 
 					onChange={this.handleChange}
 					onFocus={this.onFocused}
 					name={this.props.name}
-					className={classnames('', {'valid': this.state.validity,  'invalid': !this.state.validity && !this.state.changed})}  
+					className={ classnames({
+						'valid'	: 	this.state.validity,  
+						'invalid': !this.state.validity && !this.state.changed
+					})}
 				>
-					<option value='' disabled selected>{this.props.disabledOption}</option>
+					<option value='' disabled selected>
+						{this.props.disabledOption}
+					</option>
 					{listOptions}
 				</select>
 			</div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
-import classnames from 'classnames';
 
 class SecurityNumber extends React.Component {
 
@@ -16,19 +15,25 @@ class SecurityNumber extends React.Component {
 	handleChange(event) {
     	var nameInputed = event.target.value.length;
     	if ( nameInputed === 3 ) {
-    		this.setState({ validity: true});
-    		this.setState({ empty: false});
+    		this.setState({ 
+    			validity: 	true,
+    			empty: 		false
+    		});
     	} else {
-    		this.setState({ validity: false});
-    		this.setState({ empty: false});
+    		this.setState({ 
+    			validity: 	false,
+    			empty: 		false
+    		});
     	}
 	}
 
 	onFocused(event) {
     	var length = event.target.value.length;
     	if ( length === 0 ) {
-    		this.setState({ validity: false});
-    		this.setState({ empty: true});
+    		this.setState({ 
+    			validity: 	false,
+    			empty: 		true
+    		});
     	}
 	}
 
@@ -41,7 +46,7 @@ class SecurityNumber extends React.Component {
 					onChange={this.handleChange} 
 					onFocus={this.onFocused}
 					maskChar='' 
-					className={classnames('', {'valid': this.state.validity, 'invalid': !this.state.validity})}  
+					className={this.state.validity ? 'valid'	: 'invalid'}
 				/>
 			</div>
 	    );
