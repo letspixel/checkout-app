@@ -71,7 +71,7 @@ select:focus {
 #payment-box {
     border-radius: 8px;
     box-shadow: 0 10px 60px rgba(0, 0, 0, .1);
-    padding: 20px 40px 0;
+    padding: 20px 40px 10px;
     background: #fff;
     float: none;
     margin: auto;
@@ -159,11 +159,11 @@ select.valid {
 }
 .back-button {
     font-size: 12px;
-    padding: 20px;
+    padding: 10px 20px;
     display: inline-block;
     border-radius: 8px;
     background: #fff;
-    margin: 20px 0;
+    margin: 10px 0;
     color: #fa8105;
 }
 .invalid,
@@ -271,9 +271,31 @@ footer {
 
 footer p {
     margin: 0;
+    padding-left: 48px;
+    position: relative;
 }
 
 footer a{
     color: #fa8104;
     font-weight: bold;
+}
+
+footer img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+}
+
+.return {
+    float: none;
+    margin: auto;
+}
+
+@media screen and (min-width: 600px) {
+    footer img {
+        top:-10px;
+    }
 }

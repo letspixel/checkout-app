@@ -1,7 +1,6 @@
-import React from "react";
-import InputMask from "react-input-mask";
-import classnames from "classnames";
-import PropTypes from "prop-types";
+import React from 'react';
+import InputMask from 'react-input-mask';
+import classnames from 'classnames';
 
 class SecurityNumber extends React.Component {
 
@@ -12,10 +11,6 @@ class SecurityNumber extends React.Component {
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
-	}
-
-	componentWillReceiveProps(nextProps){
-		this.setState({ validity: nextProps.validity.value });
 	}
 
 	handleChange(event) {
@@ -30,25 +25,23 @@ class SecurityNumber extends React.Component {
 	}
 
 	onFocused(event) {
-    	var nameInputed = event.target.value.length;
-    	if ( nameInputed === 0 ) {
+    	var length = event.target.value.length;
+    	if ( length === 0 ) {
     		this.setState({ validity: false});
     		this.setState({ empty: true});
     	}
 	}
 
-
-
 	render() {
 	    return (
-			<div className="col-xs-4">
+			<div className='col-xs-4'>
 				<InputMask 
-					className="security-number"  
-					mask="999" placeholder="CSC" 
+					className='security-number'  
+					mask='999' placeholder='CSC' 
 					onChange={this.handleChange} 
 					onFocus={this.onFocused}
-					maskChar="" 
-					className={classnames("", {"valid": this.state.validity, "invalid": !this.state.validity})}  
+					maskChar='' 
+					className={classnames('', {'valid': this.state.validity, 'invalid': !this.state.validity})}  
 				/>
 			</div>
 	    );
