@@ -115,14 +115,15 @@ Just some tips on how the form works.
 
 This application is able to recognize most common carriers. Validation occurs as you type in the credit card number input, if number is recognized to be from one of the carriers listed below, it will show its flag. If number is valid, according to Luhn, flag will appear in full opacity. If carrier is unkown, no flag will be shown and input will be red to indicate it is wrong.
 
-Carriers:
-* Visa
-* MasterCard
-* American Express
-* Diners
-* Discover
-* JCB
-* Maestro
+| Carrier             | Starts with |
+| -------------       | ------------- |
+| Visa                |  Starts with 4  |
+| MasterCard          |  Starts with 51 to 55  |
+| American Express    |  Starts with 34 to 37  |
+| Diners              |  Starts with 300 to 305, 309, 36, 38 to 39  |
+| Discover            |  Starts with 6011, 622126 to 622925, 644 to 649, 65  |
+| JCB                 |  Starts with 3528 to 3589  |
+| Maestro             |  Starts with 5018, 5020, 5038, 5612, 5893, 6304, 6759, 6761, 6762, 6763, 0604, 6390  |
 
 For testing purposes:
 ```
@@ -147,16 +148,18 @@ For testing purposes:
 6759649826438453 - Maestro
 ```
 
+#### Inputs Validation
 
-### Enable Submit Button
+If inputs are empty or invalid, they turn red once user leaves it, to indicate it must be filled correctly. While user is typing, input will not show if it is invalid, as user may still be changing the content.
 
-To enable the submit button user must fill every input correctly. Rules are:
-
-* **Credit Card Number:** Must be a sequence recognized by carrier, and Length and Luhn valid.
+* **Credit Card Number:** Must be a sequence recognized by carrier, length valid and Luhn valid.
 * **Name on Card:** Should be at least 5 chars long.
 * **Month and Year:** One of the options provided must be selected.
 * **CSC:** Security number on the back of the card. Should be 3 chars long.
 
+### Submit Button
+
+To enable the submit button user must fill every input correctly. If not, button will appear disabled and form submission won't be possible.
 
 ## Built With
 
