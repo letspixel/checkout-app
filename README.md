@@ -52,6 +52,8 @@ checkout/
     components/
       Content/
         Content.js
+      Footer/
+        Footer.js
       Form/
         CardHolder/
           CardHolder.js
