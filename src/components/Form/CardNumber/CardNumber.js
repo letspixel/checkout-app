@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import creditcardutils from 'creditcardutils';
 import InputMask from 'react-input-mask';
 import classnames from 'classnames';
+import { checkIcon, invalidIcon, cardMask } from '../../../constants';
 
 class CardNumber extends Component {
 	
@@ -16,20 +17,17 @@ class CardNumber extends Component {
 	    	validity: null,
 	    	cardFlag: '',
 	    	icon: '',
-	    	validCard: false
+	    	validCard: false,
+	    	goToName: false
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	}
 
-	// Formats and validates credit card number, length and luhn 
-	// Also identifies the carrier name to show card flag
   	handleChange(event) {
   		var inputName 	= this.props.inputName;
     	var cardNumber = creditcardutils.formatCardNumber(event.target.value);
     	var cardFlag 	= creditcardutils.parseCardType(cardNumber);
     	var validity 	= creditcardutils.validateCardNumber(cardNumber);
-    	var validCard 	= validity;
-    	this.setState({ validCard: true })
     	var recognized =  '';
     	var icon			= '';
     	this.setState({ 
@@ -42,18 +40,16 @@ class CardNumber extends Component {
     		recognized = false;
     	}
     	if ( validity ) {
-    		icon = 'fa fa-check';
+    		icon = checkIcon;
     	}
     	if ( validity === false || recognized === false ) {
-    		icon = 'fa fa-close';
+    		icon = invalidIcon;
     	}
     	this.setState({ 
-    		recognized: recognized 
-    	});
-    	this.setState({ 
+    		recognized: recognized ,
     		icon: icon 
     	});
-    	this.props.handleValue({ [inputName]: validCard });
+    	this.props.handleValue({ [inputName]: validity, cardNumber: cardNumber});
 
     
 	}
@@ -73,12 +69,13 @@ class CardNumber extends Component {
 		    }>
 				<InputMask 
 					className='security-number'  
-					mask='9999  9999  9999  9999' 
-					name='cardNumber' id='credit-card-input' 
+					mask={cardMask}
+					name='cardNumber' 
+					id='credit-card-input' 
 					placeholder='Credit Card Number' 
 					maskChar=''  
 					onChange={this.handleChange} 
-					autoFocus
+					autoFocus={this.props.autoFocus}
 				/>
 				<span className={this.state.cardFlag}>
 					<i className={this.state.icon}></i>

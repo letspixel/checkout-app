@@ -64,6 +64,12 @@ input:focus,
 select:focus {
     outline: 0
 }
+input:focus,
+select:focus {
+    background: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
 #checkout {
     animation: checkoutAni 1s;
     margin: auto;
@@ -71,7 +77,7 @@ select:focus {
 #payment-box {
     border-radius: 8px;
     box-shadow: 0 10px 60px rgba(0, 0, 0, .1);
-    padding: 20px 40px 10px;
+    padding: 20px 25px 10px;
     background: #fff;
     float: none;
     margin: auto;
@@ -85,7 +91,7 @@ select:focus {
     display: block;
     height: 28px;
     position: absolute;
-    left: -40px;
+    left: -25px;
     width: 10px;
     background: #fa8105
 }
@@ -93,6 +99,9 @@ button[disabled] {
     background: #ddd;
     box-shadow: 0 4px 0 #cdcdcd;
     transform: scale(.9)
+}
+input[disabled], select[disabled] {
+    background: rgba(204, 204, 204, 0.14);
 }
 button,
 input,
@@ -118,9 +127,14 @@ input::placeholder {
 }
 .credit-card input{
     letter-spacing: 1px;
+    padding-right: 70px;
 }
 .card-holder input {
     text-transform: uppercase;
+    padding-right:20px;
+}
+.card-security input {
+    padding-right:20px;
 }
 .logo {
     max-height: 60px;
@@ -164,18 +178,18 @@ select.valid {
 }
 .back-button {
     font-size: 12px;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 40px;
     display: inline-block;
     border-radius: 8px;
     background: #fff;
     margin: 10px 0;
-    color: #fa8105;
+    color: #777;
+    position: relative;
 }
 .invalid,
 .invalid input {
     color: red;
     border-color: red;
-    background-color: #fff
 }
 .input span {
     background-repeat: no-repeat;
@@ -184,14 +198,14 @@ select.valid {
     height: 48px;
     display: block;
     position: absolute;
-    right: -20px;
+    right: -10px;
     top: 10px;
     opacity: 0;
     transition: width 0.2s 0.1s, opacity 0.3s 0.2s, right 0.3s 0.3s, background 0.4s 0.4s;
 }
 .input span {
     opacity: .3;
-    right: -3px;
+    right: 8px;
     background-position: left;
 }
 .valid span {
@@ -233,12 +247,15 @@ input,
 select{
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-    padding: 10px 0;
-    width: 100%
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-input:focus {
-    border-color: #333;
+input:focus, select:focus {
+    border-color: rgba(0, 0, 0, 0.09);;
     color: #333;
     highlight: none
 }
@@ -299,6 +316,15 @@ footer img {
 .return {
     float: none;
     margin: auto;
+    position: relative;
+}
+.return i { 
+    color: #000;
+    font-size: 24px;
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 10px;
 }
 
 @media screen and (min-width: 600px) {

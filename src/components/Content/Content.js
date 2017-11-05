@@ -18,7 +18,7 @@ const Content = () => {
       </div>
       <div className='row'>
         <div className='return col-xs-12 col-sm-8 col-md-5'>
-          <a href='/#'><span className='back-button'><i className='fa fa-arrow-left'></i> Return to cart</span></a>
+          <a href='http://github.com/letspixel/checkout-app'><span className='back-button'><i className='fa fa-github'></i> Return to Github</span></a>
         </div>
       </div>
     </div>

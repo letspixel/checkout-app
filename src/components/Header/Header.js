@@ -6,8 +6,8 @@ const Header = () => {
     <nav className='navbar navbar-default'>
 	    <div className='container'>
 	      <div className='navbar-header col-xs-12'>
-	        <a href='/#'><img alt='' title='Symbio' className='logo' src={logo} /></a>
-	        <a href='/#'><span className='pull-right'>Cancel</span></a>
+	        <a href='/symbio'><img alt='' title='Symbio' className='logo' src={logo} /></a>
+	        <a href='/symbio'><span className='pull-right'><i className='fa fa-refresh'></i> Reload</span></a>
 	      </div>
 	    </div>
 	  </nav>

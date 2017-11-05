@@ -3,46 +3,32 @@ import SecurityNumber from './SecurityNumber/SecurityNumber';
 import Select from './Select/Select';
 import CardHolder from './CardHolder/CardHolder';
 import CardNumber from './CardNumber/CardNumber';
-import { FTP } from '../../constants';
+import { monthOptions, yearOptions } from '../../constants';
 
 class Form extends Component {
 
 	constructor(props) {
 	    super(props);
 	    this.onSubmit = this.handleSubmit.bind(this);
-	    this.checkInputs = this.checkInputs.bind(this);
 	    this.state = { 
 	    	disabledSubmit: true,
 			validCard: false,
+			disabled: true, 
+			validName: false,
+			CardNumber: '',
 			holderName: '',
 			month: '',
 			year: '',
 			cscNumber: '',
-			filled: ''
+			cscValid: false
 	    };
 	}
 
 
   	onChangeValue = param => {
-  		this.checkInputs();
   		this.setState( param );
+  		console.log(param)
   	};
-
-
-  	checkInputs() {
-  		if ( 
-  			this.state.validCard === true && 
-  			this.state.holderName.length > 4 && 
-  			this.state.month !== '' && 
-  			this.state.year !== '' && 
-  			this.state.cscNumber.length === 2 
-
-  		) {
-  			this.setState({ disabledSubmit : false })
-  		} else {
-  			this.setState({ disabledSubmit : true })
-  		}
-  	}
 
 
 	handleSubmit(event) {
@@ -58,64 +44,53 @@ class Form extends Component {
 
 		console.log(formContent);
 
-		let self = this;
-
-		if ( formContent !== '' ) {
-		  	fetch(FTP, {
-		      	method: 'POST',
-		      	body: JSON.stringify(formContent)
-		    }).then(function(response) {
-		      console.log(response);
-		      if (response.ok) {
-		        self.setState({
-		          // submitted: true,
-		          // cardNumber: '',
-		          // cardHolder: '',
-		          // month: '',
-		          // year: '',
-		          // securityNumber: '',
-		        })
-		      } else {
-		        self.setState({submitted: false})
-		      }
-		    }).then(function(body) {});
-		} else {
-		  this.setState({
-		    enableSubmit: true,
-		    submitted: 	false
-		  })
-		}
 		alert('Hi, ' + this.state.holderName + '! Your credit card is valid until ' + this.state.month + '/' + this.state.year +'. Good shopping!'
 		);
 	}
 
 	render() {
-		var disabled = this.state.disabledSubmit
+		var validCard = this.state.validCard 
+		var validName = validCard && this.state.validName
+		var validMonth = validName && this.state.month 
+		var validYear = validMonth && this.state.year
+		var cscValid = validYear && this.state.cscValid
+		var disabled = !cscValid
 	  	return (
 		    <form onSubmit={this.onSubmit}>
 				<CardNumber 
-                	handleValue={this.onChangeValue}
+               handleValue={this.onChangeValue}
 					inputName='validCard' 
-                />
+					autoFocus={!validCard}
+            />
 				<CardHolder
-                	handleValue={this.onChangeValue}
+               handleValue={this.onChangeValue}
 					inputName='holderName' 
-                />
+					disabled={!validCard}
+					autoFocus={!validCard}
+            />
 				<div className='row'>
-					<Select 
-	                	handleValue={this.onChangeValue} 
-						disabledOption='MM' 
-						inputName='month' 
-						options={['01','02','03','04','05','06','07','08','09','10','11','12']}
-	                />
-					<Select 
-	                	handleValue={this.onChangeValue} 
-						disabledOption='YY' 
-						inputName='year' 
-						options={['17','18','19','20','21','22','23','24','25']}/>
+					<div className="col-xs-7">
+						<div className='row'>
+							<Select 
+			               handleValue={this.onChangeValue} 
+								inputName='month' 
+								disabledOption='MM' 
+								options={monthOptions}
+								disabled={!validName}
+			            />
+							<Select 
+			               handleValue={this.onChangeValue} 
+								inputName='year' 
+								disabledOption='YY' 
+								options={yearOptions}
+								disabled={!validMonth}
+							/>
+						</div>
+					</div>
 					<SecurityNumber 
-	                	handleValue={this.onChangeValue} 
-						inputName='cscNumber' 
+	               handleValue={this.onChangeValue}
+						inputName='cscNumber'
+						disabled={!validYear} 
 					/>
 				</div>
 				<button 

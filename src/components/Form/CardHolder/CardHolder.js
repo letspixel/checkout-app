@@ -12,27 +12,29 @@ class CardHolder extends React.Component {
 	constructor(props) {
 	    super(props);
 	    this.state = { 
+	    	validCard: false,
 	    	validity: true, 
 	    	icon: '',
 	    	name: ''
-	    	// Set to true at first so that the input appears normally
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	    this.onFocused = this.onFocused.bind(this);
 	}
 
-	// Checks if there is at least 5 chars 
 	handleChange(event) {
   		var inputName 	= this.props.inputName;
 		var cardname = event.target.value;
     	var nameLength = event.target.value.length;
-    	if ( nameLength > 5 ) {
+    	var validName = '';
+    	if ( nameLength > 5 && nameLength < 25) {
+    		validName = true;
     		this.setState({ 
     			validity: 	true, 
     			empty: 		false,
     			icon: 		'fa fa-check'
     		});
     	} else {
+    		validName = false;
     		this.setState({ 
     			validity: 	false, 
     			empty: 		false,
@@ -40,10 +42,9 @@ class CardHolder extends React.Component {
     		});
     	}
     	this.setState({ name: cardname });
-    	this.props.handleValue({ [inputName]: cardname });
+    	this.props.handleValue({ [inputName]: cardname, validName: validName });
 	}
 
-	// If user focuses on the input but doesn't fill it, it will appear invalid
 	onFocused(event) {
     	var nameLength = event.target.value.length;
     	if ( nameLength === 0 ) {
@@ -71,8 +72,10 @@ class CardHolder extends React.Component {
 					id='name-input'  
 					placeholder='Name on Credit Card' 
 					maskChar=''
+					mask=''
 					onChange={this.handleChange}
 					onFocus={this.onFocused}
+					disabled={this.props.disabled}
 					className={this.state.validity ? 'valid'	: 'invalid'}
 				/>
 				<span>

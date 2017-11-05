@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import creditcardutils from 'creditcardutils';
 import InputMask from 'react-input-mask';
 import classnames from 'classnames';
 
@@ -12,7 +13,7 @@ class SecurityNumber extends React.Component {
 	constructor(props) {
 	    super(props);
 	    this.state = { 
-	    	validity: true,
+	    	cscValidity: true,
 	    	icon: '',
 	    	CSC: ''
 	    };
@@ -23,54 +24,59 @@ class SecurityNumber extends React.Component {
 	handleChange(event) {
 		var inputName = this.props.inputName;
 		var cscNumber = event.target.value;
-    	var length = cscNumber.length;
-    	if ( length === 3 ) {
+		var cscValid = creditcardutils.validateCardCVC(cscNumber);
+    	if ( cscValid === true ) {
     		this.setState({ 
-    			validity: 	true,
+    			disabledSubmit: 	false,
+    			cscValidity: 	true,
     			empty: 		false,
     			icon: 		'fa fa-check'
     		});
     	} else {
     		this.setState({ 
-    			validity: 	false,
+    			cscValidity: 	false,
     			empty: 		false,
     			icon: 		'fa fa-close'
     		});
     	}
-    	this.setState({ CSC: cscNumber })
-    	this.props.handleValue({ [inputName]: cscNumber });
+    	this.setState({ CSC: cscNumber  })
+    	this.props.handleValue({ [inputName]: cscNumber, cscValid: cscValid, disabledSubmit: !cscValid });
 	}
 
 	onFocused(event) {
     	var length = event.target.value.length;
     	if ( length === 0 ) {
     		this.setState({ 
-    			validity: 	false,
+    			cscValidity: 	false,
     			empty: 		true
     		});
     	}
 	}
 
 	render() {
+		var cscValidity = this.state.cscValidity;
 	    return (
-	    	<div className='col-xs-4'>
+	    	<div className='col-xs-5'>
 				<div className={
 		    		classnames(
 			    		'card-security', 
 			    		'input',
 			    		{
-			    			'valid'		: this.state.validity,  
-			    			'invalid'	: !this.state.validity 
+			    			'valid'		: cscValidity,  
+			    			'invalid'	: !cscValidity 
 			    		}
 			    	)
 			    }>
 					<InputMask 
-						className='security-number'  
-						mask='999' placeholder='CSC' 
+						className='security-number' 
+	               disabled='true' 
+						mask='999' 
+						placeholder='CSC' 
 						onChange={this.handleChange} 
 						onFocus={this.onFocused}
 						maskChar='' 
-						className={this.state.validity ? 'valid'	: 'invalid'}
+						disabled={this.props.disabled}
+						className={cscValidity ? 'valid'	: 'invalid'}
 					/>
 					<span>
 						<i className={this.state.icon}></i>
