@@ -26,17 +26,15 @@ First of all, please download or clone this repo.
   - [npm run build](#npm-run-build)
 - [Application Usage](#application-usage)
   - [Credit Card Number](#credit-card-number)
-  - [Inputs Validation](inputs-validation)
+  - [Inputs Validation](#inputs-validation)
   - [Submit Button](#submit-button)
-- [Issues](#issues)
-  - [Issues solved](#issues-solved)
-- Development Process
-  - [Basic HTML]#basic-html
-  - [Creating Components]#creating-components
-  - [Validation]#validation
-  - [Improvements]#improvements
-- [Re-usable Component]#re-usable-component
-  - [Select]#select
+- [Development Process](#development-process)
+  - [Basic HTML](#basic-html)
+  - [Creating Components](#creating-components)
+  - [Validation](#validation)
+  - [Improvements](#improvements)
+- [Re-usable Component](#re-usable-component)
+  - [Select](#select)
 - [Built with](#built-with)
 
 
@@ -156,14 +154,14 @@ Enhance HTML and CSS to get a better layout and to allow a user friendly applica
 ### Creating Components
 
 Converting HTML group of elements into single component. The components created are listed below:
-* Header: The navbar and it's contents. Does not receive any props.
-* Content: This is the main body that holds Form component. Also does not receive any props.
-  * Form: This is the container for form inputs, selects and submit button. Will pass props to child components and later will receive their new state with a function. The function will get each input value to be handled on form submit. All child components must have a inputName and handleValue props.
-    * CardNumber: This is the input for the credit card number. 
-    * CardHolder: Also an input for the credit card holder name. 
-    * Select: For Month and Year options. This is a [re-usable component]#re-usable-component.
-    * SecurityNumber: Input for the security code on the back of the card.
-* Footer: This only holds a description of the project and author identification.
+* **Header**: The navbar and it's contents. Does not receive any props.
+* **Content**: This is the main body that holds Form component. Also does not receive any props.
+  * **Form**: This is the container for form inputs, selects and submit button. Will pass props to child components and later will receive their new state with a function. The function will get each input value to be handled on form submit. All child components must have a inputName and handleValue props.
+    * **CardNumber**: This is the input for the credit card number. 
+    * **CardHolder**: Also an input for the credit card holder name. 
+    * **Select**: For Month and Year options. This is a [re-usable component](#re-usable-component).
+    * **SecurityNumber**: Input for the security code on the back of the card.
+* **Footer**: This only holds a description of the project and author identification.
 
 ### Validation
 
@@ -171,13 +169,13 @@ After components are created, now it is possible to work on the logic to check a
 
 ### Improvements
 
-At this point it's clear to see that some changes can be made to enhance the process. These improvements were in the code itself and on the design and usability aspects.
+At this point improvements were made in the code itself, also on the design and usability aspects.
 
 ## Re-usable Component
 
 ### Select
 
-Select was the only element that was used twice. It's usage is simple, just provide the props below:
+Select was the only element that was used twice. Its usage is simple, just provide the props below:
 - disabledOption: This value will work as a title for the select element, it will be the first option and non-selectable.
 - options: Each value will turn into an option element.
 
