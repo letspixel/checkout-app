@@ -28,7 +28,7 @@ First of all, please download or clone this repo.
   - [Credit Card Number](#credit-card-number)
   - [Inputs Validation](inputs-validation)
   - [Enable Submit Button](#enable-submit-button)
-- [Build with](#build-with)
+- [Built with](#built-with)
 
 
 ## Folder Structure
@@ -70,7 +70,6 @@ checkout/
     App.js
     constants.js
     index.js
-    style.css
   .gitignore
   package-json.lock
   package.json
@@ -100,7 +99,7 @@ Launches the test runner in the interactive watch mode.<br>
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
+Builds the app for production to the `build` folder. Before running this, please change "Homepage" on package.json.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>

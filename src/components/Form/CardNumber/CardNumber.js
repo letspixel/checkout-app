@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
+import propTypes from 'prop-types';
 import creditcardutils from 'creditcardutils';
 import InputMask from 'react-input-mask';
 import classnames from 'classnames';
 
 class CardNumber extends Component {
 	
+	static propTypes = {
+    handleValid: propTypes.func,
+	};
+	
 	constructor(props) {
 	    super(props);
 	    this.state = { 
 	    	validity: null,
 	    	cardFlag: '',
-	    	icon: ''
+	    	icon: '',
+	    	validCard: false
 	    };
 	    this.handleChange = this.handleChange.bind(this);
 	}
@@ -21,12 +27,14 @@ class CardNumber extends Component {
     	var cardNumber = creditcardutils.formatCardNumber(event.target.value);
     	var cardFlag 	= creditcardutils.parseCardType(cardNumber);
     	var validity 	= creditcardutils.validateCardNumber(cardNumber);
+    	var validCard 	= validity;
+    	this.setState({ validCard: true })
+    	var recognized =  '';
     	var icon			= '';
     	this.setState({ 
     		validity: validity, 
     		cardFlag: cardFlag 
     	});
-    	var recognized =  '';
     	if ( cardFlag !== null ) {
     		recognized = true;
     	} else {
@@ -44,6 +52,9 @@ class CardNumber extends Component {
     	this.setState({ 
     		icon: icon 
     	});
+    	this.props.handleValid(validCard);
+
+    	
 	}
 
 	render() {
@@ -51,6 +62,7 @@ class CardNumber extends Component {
 	    	<div className={
 	    		classnames(
 		    		'credit-card', 
+		    		'input', 
 		    		{
 		    			'valid'		: this.state.validity,  
 		    			'invalid'	: !this.state.validity || !this.state.recognized,

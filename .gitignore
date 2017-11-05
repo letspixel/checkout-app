@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+/ftpsync.settings
 
 # production
 /build

@@ -100,10 +100,12 @@ select {
     margin: 10px 0;
     color: #333;
     font-size: 20px;
-    transition: .3s
+    transition: .3s;
+    letter-spacing: 1px;
 }
 input::placeholder {
-    color: #ddd
+    color: #ddd;
+    text-transform: capitalize;
 }
 .panel-body {
     padding: 0
@@ -111,11 +113,14 @@ input::placeholder {
 .panel {
     box-shadow: none
 }
-.credit-card {
+.input {
     position: relative
 }
 .credit-card input{
     letter-spacing: 1px;
+}
+.card-holder input {
+    text-transform: uppercase;
 }
 .logo {
     max-height: 60px;
@@ -172,7 +177,7 @@ select.valid {
     border-color: red;
     background-color: #fff
 }
-.credit-card span {
+.input span {
     background-repeat: no-repeat;
     background-position: 0 100%;
     width: 60px;
@@ -184,7 +189,7 @@ select.valid {
     opacity: 0;
     transition: width 0.2s 0.1s, opacity 0.3s 0.2s, right 0.3s 0.3s, background 0.4s 0.4s;
 }
-.credit-card span {
+.input span {
     opacity: .3;
     right: -3px;
     background-position: left;
@@ -238,7 +243,7 @@ input:focus {
     highlight: none
 }
 
-.credit-card span .fa {
+.input span .fa {
     position: absolute;
     right: -10px;
     font-size: 20px;
