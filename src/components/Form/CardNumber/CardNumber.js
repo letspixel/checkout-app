@@ -7,7 +7,7 @@ import classnames from 'classnames';
 class CardNumber extends Component {
 	
 	static propTypes = {
-    handleValid: propTypes.func,
+    handleValue: propTypes.func,
 	};
 	
 	constructor(props) {
@@ -24,6 +24,7 @@ class CardNumber extends Component {
 	// Formats and validates credit card number, length and luhn 
 	// Also identifies the carrier name to show card flag
   	handleChange(event) {
+  		var inputName 	= this.props.inputName;
     	var cardNumber = creditcardutils.formatCardNumber(event.target.value);
     	var cardFlag 	= creditcardutils.parseCardType(cardNumber);
     	var validity 	= creditcardutils.validateCardNumber(cardNumber);
@@ -52,9 +53,9 @@ class CardNumber extends Component {
     	this.setState({ 
     		icon: icon 
     	});
-    	this.props.handleValid(validCard);
+    	this.props.handleValue({ [inputName]: validCard });
 
-    	
+    
 	}
 
 	render() {

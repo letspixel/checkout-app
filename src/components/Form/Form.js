@@ -23,32 +23,19 @@ class Form extends Component {
 	}
 
 
-  	onChangeValid = param => {
-  		this.checkInputs();
-  		this.setState({ validCard: param });
-  	};
-  	onChangeName = param => {
-  		this.checkInputs();
-  		this.setState({ holderName: param });
-  	};
   	onChangeValue = param => {
   		this.checkInputs();
   		this.setState( param );
   	};
-  	onChangeCSC = param => {
-  		this.checkInputs();
-  		this.setState({ cscNumber: param });
-  	};
 
 
   	checkInputs() {
-  		console.log('check!')
   		if ( 
   			this.state.validCard === true && 
-  			this.state.holderName.length > 5 && 
+  			this.state.holderName.length > 4 && 
   			this.state.month !== '' && 
   			this.state.year !== '' && 
-  			this.state.cscNumber.length === 3 
+  			this.state.cscNumber.length === 2 
 
   		) {
   			this.setState({ disabledSubmit : false })
@@ -107,10 +94,12 @@ class Form extends Component {
 	  	return (
 		    <form onSubmit={this.onSubmit}>
 				<CardNumber 
-                	handleValid={this.onChangeValid}
+                	handleValue={this.onChangeValue}
+					inputName='validCard' 
                 />
 				<CardHolder
-                	handleName={this.onChangeName} 
+                	handleValue={this.onChangeValue}
+					inputName='holderName' 
                 />
 				<div className='row'>
 					<Select 
@@ -125,7 +114,8 @@ class Form extends Component {
 						inputName='year' 
 						options={['17','18','19','20','21','22','23','24','25']}/>
 					<SecurityNumber 
-						handleCSC = {this.onChangeCSC}
+	                	handleValue={this.onChangeValue} 
+						inputName='cscNumber' 
 					/>
 				</div>
 				<button 

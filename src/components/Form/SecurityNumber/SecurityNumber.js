@@ -6,7 +6,7 @@ import classnames from 'classnames';
 class SecurityNumber extends React.Component {
 	
 	static propTypes = {
-    handleCSC: propTypes.func,
+    handleValue: propTypes.func,
 	};
 
 	constructor(props) {
@@ -21,6 +21,7 @@ class SecurityNumber extends React.Component {
 	}
 
 	handleChange(event) {
+		var inputName = this.props.inputName;
 		var cscNumber = event.target.value;
     	var length = cscNumber.length;
     	if ( length === 3 ) {
@@ -37,7 +38,7 @@ class SecurityNumber extends React.Component {
     		});
     	}
     	this.setState({ CSC: cscNumber })
-    	this.props.handleCSC(cscNumber);
+    	this.props.handleValue({ [inputName]: cscNumber });
 	}
 
 	onFocused(event) {

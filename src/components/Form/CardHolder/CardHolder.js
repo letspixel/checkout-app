@@ -6,7 +6,7 @@ import classnames from 'classnames';
 class CardHolder extends React.Component {
 	
 	static propTypes = {
-    handleName: propTypes.func,
+    handleValue: propTypes.func,
 	};
 
 	constructor(props) {
@@ -23,6 +23,7 @@ class CardHolder extends React.Component {
 
 	// Checks if there is at least 5 chars 
 	handleChange(event) {
+  		var inputName 	= this.props.inputName;
 		var cardname = event.target.value;
     	var nameLength = event.target.value.length;
     	if ( nameLength > 5 ) {
@@ -39,7 +40,7 @@ class CardHolder extends React.Component {
     		});
     	}
     	this.setState({ name: cardname });
-    	this.props.handleName(cardname);
+    	this.props.handleValue({ [inputName]: cardname });
 	}
 
 	// If user focuses on the input but doesn't fill it, it will appear invalid
