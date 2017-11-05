@@ -45,10 +45,10 @@ class Form extends Component {
   		console.log('check!')
   		if ( 
   			this.state.validCard === true && 
-  			this.state.holderName !== '' && 
+  			this.state.holderName.length > 5 && 
   			this.state.month !== '' && 
   			this.state.year !== '' && 
-  			this.state.cscNumber !== '' 
+  			this.state.cscNumber.length === 3 
 
   		) {
   			this.setState({ disabledSubmit : false })
@@ -98,6 +98,8 @@ class Form extends Component {
 		    submitted: 	false
 		  })
 		}
+		alert('Hi, ' + this.state.holderName + '! Your credit card is valid until ' + this.state.month + '/' + this.state.year +'. Good shopping!'
+		);
 	}
 
 	render() {
