@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import SecurityNumber from './SecurityNumber/SecurityNumber';
 import Select from './Select/Select';
 import CardHolder from './CardHolder/CardHolder';
 import CardNumber from './CardNumber/CardNumber';
-import { monthOptions, yearOptions } from '../../constants';
+import { monthOptions, yearOptions, checkIcon } from '../../constants';
 
 class Form extends Component {
 
@@ -20,14 +21,15 @@ class Form extends Component {
 			month: '',
 			year: '',
 			cscNumber: '',
-			cscValid: false
+			cscValid: false,
+			message: 'Pay Now',
+			success: false
 		};
 	}
 
 
 	onChangeValue = param => {
 		this.setState( param );
-		console.log(param)
 	};
 
 
@@ -44,8 +46,10 @@ class Form extends Component {
 
 		console.log(formContent);
 
-		alert('Hi, ' + this.state.holderName + '! Your credit card is valid until ' + this.state.month + '/' + this.state.year +'. Good shopping!'
-		);
+		this.setState({
+			success: true,
+			message: 'Order complete, thank you!'
+		});
 	}
 
 	render() {
@@ -95,11 +99,17 @@ class Form extends Component {
 				</div>
 				<button 
 					disabled={disabled}
-					className='submit' 
+					className={classnames(
+						'submit',
+						{
+							'success'		: this.state.success 
+						}
+					)}
 					type='submit'  
 					onClick={this.state.handleSubmit} 
 				>
-					<i className='fa fa-check'></i> Pay Now
+					<i className={checkIcon}></i>
+					{this.state.message}
 				</button>
 			</form>
 		);

@@ -326,6 +326,10 @@ footer img {
     top: 5px;
     left: 10px;
 }
+.success {
+    background: green;
+    box-shadow: 0 4px 0 darkgreen;
+}
 
 @media screen and (min-width: 600px) {
     footer img {
