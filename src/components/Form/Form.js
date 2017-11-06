@@ -8,10 +8,10 @@ import { monthOptions, yearOptions } from '../../constants';
 class Form extends Component {
 
 	constructor(props) {
-	    super(props);
-	    this.onSubmit = this.handleSubmit.bind(this);
-	    this.state = { 
-	    	disabledSubmit: true,
+		super(props);
+		this.onSubmit = this.handleSubmit.bind(this);
+		this.state = { 
+			disabledSubmit: true,
 			validCard: false,
 			disabled: true, 
 			validName: false,
@@ -21,14 +21,14 @@ class Form extends Component {
 			year: '',
 			cscNumber: '',
 			cscValid: false
-	    };
+		};
 	}
 
 
-  	onChangeValue = param => {
-  		this.setState( param );
-  		console.log(param)
-  	};
+	onChangeValue = param => {
+		this.setState( param );
+		console.log(param)
+	};
 
 
 	handleSubmit(event) {
@@ -55,31 +55,31 @@ class Form extends Component {
 		var validYear = validMonth && this.state.year
 		var cscValid = validYear && this.state.cscValid
 		var disabled = !cscValid
-	  	return (
-		    <form onSubmit={this.onSubmit}>
+		return (
+			 <form onSubmit={this.onSubmit}>
 				<CardNumber 
-               handleValue={this.onChangeValue}
+					handleValue={this.onChangeValue}
 					inputName='validCard' 
 					autoFocus={!validCard}
-            />
+				/>
 				<CardHolder
-               handleValue={this.onChangeValue}
+					handleValue={this.onChangeValue}
 					inputName='holderName' 
 					disabled={!validCard}
 					autoFocus={!validCard}
-            />
+				/>
 				<div className='row'>
 					<div className="col-xs-7">
 						<div className='row'>
 							<Select 
-			               handleValue={this.onChangeValue} 
+								handleValue={this.onChangeValue} 
 								inputName='month' 
 								disabledOption='MM' 
 								options={monthOptions}
 								disabled={!validName}
-			            />
+							/>
 							<Select 
-			               handleValue={this.onChangeValue} 
+								handleValue={this.onChangeValue} 
 								inputName='year' 
 								disabledOption='YY' 
 								options={yearOptions}
@@ -88,7 +88,7 @@ class Form extends Component {
 						</div>
 					</div>
 					<SecurityNumber 
-	               handleValue={this.onChangeValue}
+						handleValue={this.onChangeValue}
 						inputName='cscNumber'
 						disabled={!validYear} 
 					/>
@@ -102,7 +102,7 @@ class Form extends Component {
 					<i className='fa fa-check'></i> Pay Now
 				</button>
 			</form>
-	  	);
+		);
 	};
 };
 

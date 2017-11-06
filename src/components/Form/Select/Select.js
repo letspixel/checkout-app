@@ -5,30 +5,30 @@ import propTypes from 'prop-types';
 class Select extends React.Component {
 	
 	static propTypes = {
-    handleValue: propTypes.func,
+	 handleValue: propTypes.func,
 	};
 
 	constructor(props) {
-	    super(props);
-	    this.state = { 
-	    	validity: '',
-	    	changed: true, 
-	    };
-	    this.handleChange = this.handleChange.bind(this);
+		super(props);
+		this.state = { 
+			validity: '',
+			changed: true, 
+		};
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	handleChange(event) {
 		var inputName = this.props.inputName;
 		var option = event.target.value;
-    	var optionLength = option.length;
-    	this.setState({ changed: true });
-    	if ( optionLength > 0 ) {
-    		this.setState({ validity: true});
-    	} else {
-    		this.setState({ validity: false});
-    	}
-    	this.setState({ [inputName]: option })
-    	this.props.handleValue({ [inputName]: option });
+		var optionLength = option.length;
+		this.setState({ changed: true });
+		if ( optionLength > 0 ) {
+			this.setState({ validity: true});
+		} else {
+			this.setState({ validity: false});
+		}
+		this.setState({ [inputName]: option })
+		this.props.handleValue({ [inputName]: option });
 	}
 
 	render() {
@@ -38,9 +38,9 @@ class Select extends React.Component {
 				{number}
 			</option>
 		);
-	    return (
-	    	<div className='col-xs-6'>
-	    		<select 
+		 return (
+			<div className='col-xs-6'>
+				<select 
 					onChange={this.handleChange}
 					name={this.props.name}
 					disabled={this.props.disabled}
@@ -55,7 +55,7 @@ class Select extends React.Component {
 					{listOptions}
 				</select>
 			</div>
-	    );
+		 );
 	};
 };
 
